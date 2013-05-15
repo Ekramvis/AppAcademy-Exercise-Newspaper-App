@@ -1,0 +1,11 @@
+<h1>New Sub. Plan</h1>
+
+<%= form_for(@subscriptionplan) do |f| %>
+	<%= f.label :price %>
+	<%= f.number_field :price, step: 0.01 %>
+	<br>
+	Weekly: <%= f.radio_button :weekly, true %>
+	Daily: <%= f.radio_button :weekly, false %>
+	<br>
+	<%= f.submit "New Subscription Plan"%>
+<% end %>

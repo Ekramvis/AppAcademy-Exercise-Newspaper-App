@@ -3,5 +3,5 @@ class Newspaper < ActiveRecord::Base
 
 	validates :title, :editor, presence: true
 
-
+	has_many :subscription_plans
 end
