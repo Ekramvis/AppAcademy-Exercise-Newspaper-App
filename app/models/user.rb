@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-	attr_accessible :name, :password, :password_confirmation
+	attr_accessible :name, :password, :password_confirmation, :subscription_plan_ids
 	has_secure_password
 
 	validates :name, :password, :password_confirmation, presence: true, on: :create
