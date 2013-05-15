@@ -1,20 +1,22 @@
 <h1>New Newspaper</h1>
 
-<%= form_for(@newspaper) do |f| %>
-	<%= f.label :title %>
-	<%= f.text_field :title %>
-	<br>
-	<%= f.label :editor %>
-	<%= f.text_field :editor %>
-	<br>
+<%= simple_form_for(@newspaper, class:"form-vertical") do |f| %>
+	<%= f.input :title %>
+	<%= f.input :editor %>
+	<h4>Subscription Plans</h4>
 	<%= f.fields_for(:subscription_plans) do |sp| %>
-		<h4>Subscription Plan</h4>
 		<%= sp.label :price %>
 		<%= sp.number_field :price, step: 0.01 %>
 		<br>
-		Weekly: <%= sp.radio_button :weekly, true %>
-		Daily: <%= sp.radio_button :weekly, false %>
+
+		<%= sp.label :weekly, 'Weekly', :value => 'true',
+						style: "display: inline" %>
+		<%= sp.radio_button :weekly, true %>
+		<%= sp.label :weekly, 'Daily', :value => 'false',
+						style: "display: inline" %>
+		<%= sp.radio_button :weekly, false %>
+		<br>
+		<br>
 	<% end%>
-	<br>
 	<%= f.submit "Create Paper" %>
 <% end %>
