@@ -5,4 +5,6 @@ NewspaperApp::Application.routes.draw do
 		end
 	end
 
+	resources :users
+	resource :session
 end

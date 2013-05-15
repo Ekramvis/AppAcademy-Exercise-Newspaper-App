@@ -6,4 +6,7 @@ class SubscriptionPlan < ActiveRecord::Base
 	validates :weekly, inclusion: {in: [true, false]}
 
 	belongs_to :newspaper, inverse_of: :subscription_plans
+
+	has_many :subscriptions
+	has_many :users, through: :subscriptions
 end
