@@ -7,5 +7,14 @@
 	<%= f.label :editor %>
 	<%= f.text_field :editor %>
 	<br>
+	<%= f.fields_for(:subscription_plans) do |sp| %>
+		<h4>Subscription Plan</h4>
+		<%= sp.label :price %>
+		<%= sp.number_field :price, step: 0.01 %>
+		<br>
+		Weekly: <%= sp.radio_button :weekly, true %>
+		Daily: <%= sp.radio_button :weekly, false %>
+	<% end%>
+	<br>
 	<%= f.submit "Create Paper" %>
 <% end %>
