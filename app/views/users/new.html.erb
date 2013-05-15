@@ -12,16 +12,31 @@
 	<%= f.password_field :password_confirmation %>
 	<br>
 	<h4>Subscribe</h4>
-	<% SubscriptionPlan.all.each do |sp| %>
-		<%= sp.newspaper.title %> - <%= sp.weekly ? "Weekly" : "Daily"%>
-		- $<%= sp.price %>
-		<%= check_box_tag(
-			"user[subscription_plan_ids][]",
-			sp.id
-		)%>
+	<% Newspaper.all.each do |news| %>
+		<%= news.title %>
+		<select name="user[subscription_plan_ids][]">
+			<option value="">None</option>
+			<% news.subscription_plans.each do |sp| %>
+			<option value="<%= sp.id %>"><%= sp.weekly ? "Weekly" : "Daily" %></option>
+			<% end %>
+		</select>
 		<br>
 	<% end %>
 	<br>
-	<%= hidden_field_tag("user[subscription_plan_ids][]", "")%>
+
 	<%= f.submit "Sign up"%>
 <% end %>
+
+
+
+<!--
+<%# SubscriptionPlan.all.each do |sp| %>
+	<%#= sp.newspaper.title %> - <%#= sp.weekly ? "Weekly" : "Daily"%>
+	- $<%#= sp.price %>
+	<%#= check_box_tag(
+		"user[subscription_plan_ids][]",
+		sp.id
+	)%>
+	<br>
+<%# end %>
+-->
