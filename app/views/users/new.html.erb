@@ -1,19 +1,14 @@
 <h1> New User </h1>
 
-<%= form_for(@user) do |f| %>
+<%= simple_form_for(@user, :html => {:class => 'form-vertical' }) do |f| %>
+	<%= f.input :name %>
+	<%= f.input :password %>
+	<%= f.input :password_confirmation %>
 
-	<%= f.label :name %>
-	<%= f.text_field :name %>
-	<br>
-	<%= f.label :password %>
-	<%= f.password_field :password %>
-	<br>
-	<%= f.label :password_confirmation %>
-	<%= f.password_field :password_confirmation %>
-	<br>
 	<h4>Subscribe</h4>
 	<% Newspaper.all.each do |news| %>
-		<%= news.title %>
+		<p class="control-label"><%= news.title %><p>
+
 		<select name="user[subscription_plan_ids][]">
 			<option value="">None</option>
 			<% news.subscription_plans.each do |sp| %>
@@ -24,7 +19,7 @@
 	<% end %>
 	<br>
 
-	<%= f.submit "Sign up"%>
+		<%= f.submit "Sign up"%>
 <% end %>
 
 

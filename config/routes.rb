@@ -1,4 +1,5 @@
 NewspaperApp::Application.routes.draw do
+	root to: "users#new"
 	resources :newspapers do
 		member do
 			resources :subscription_plans, only: [:new, :create]

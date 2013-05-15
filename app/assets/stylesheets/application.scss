@@ -11,3 +11,9 @@
  *= require_self
  *= require_tree .
  */
+
+@import "bootstrap";
+
+.navbar-text {
+	margin-right: 15px;
+};
