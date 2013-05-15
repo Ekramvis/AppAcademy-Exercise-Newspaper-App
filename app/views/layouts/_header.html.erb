@@ -1,0 +1,15 @@
+<header class="navbar navbar-inverse">
+	<div class="row navbar-inner">
+		<%= link_to "NEWSPAPER APP", root_url, class: "brand" %>
+		<% if logged_in? %>
+			<%= link_to "Log Out", logout_path, class: "btn pull-right" %>
+			<strong class="navbar-text pull-right"><%= current_user.name %></strong>
+
+
+		<% else %>
+			<%= link_to "Sign Up", new_user_path, class: "btn pull-right btn-primary" %>
+			<%= render partial: 'sessions/form' %>
+		<% end %>
+	</div>
+</header>
+
