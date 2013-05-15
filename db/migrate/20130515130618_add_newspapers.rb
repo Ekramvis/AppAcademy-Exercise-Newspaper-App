@@ -2,7 +2,7 @@ class AddNewspapers < ActiveRecord::Migration
   def change
 		create_table :newspapers do |t|
 			t.string :title
-			t.string :email
+			t.string :editor
 
 			t.timestamps
 		end
