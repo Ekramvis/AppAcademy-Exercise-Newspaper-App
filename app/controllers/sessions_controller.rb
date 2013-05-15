@@ -1,4 +1,4 @@
-class SessionsController < ApplicationRecord
+class SessionsController < ApplicationController
 	def new
 	end
 
@@ -6,13 +6,15 @@ class SessionsController < ApplicationRecord
 		user = User.find_by_name(params[:name])
 
 		if user && user.authenticate(params[:password])
-			user.remember_token = SecureRandom.hex
-			cookies.permanent[:remember_token] = user.remember_token
+			set_cookie(user)
+			redirect_to new_newspaper_url
 		else
 			render :new
 		end
 	end
 
 	def destroy
+		logout
+		redirect_to :back
 	end
 end

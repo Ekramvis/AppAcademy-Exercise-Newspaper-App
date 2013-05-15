@@ -22,6 +22,7 @@ module ApplicationHelper
 	def set_cookie(user)
 		user.remember_token = SecureRandom.hex
 		cookies[:remember_token] = user.remember_token
+		user.send(:update)
 	end
 
 end

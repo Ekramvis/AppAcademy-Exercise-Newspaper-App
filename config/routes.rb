@@ -7,4 +7,7 @@ NewspaperApp::Application.routes.draw do
 
 	resources :users
 	resource :session
+
+	match '/login', to: "sessions#new"
+	match '/logout', to: "sessions#destroy"
 end
